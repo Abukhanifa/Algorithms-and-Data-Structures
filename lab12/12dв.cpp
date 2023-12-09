@@ -6,7 +6,7 @@
 using namespace std; 
 
 vector<pair<int,int> > v; 
-bool cmp(pair<int,int> p1, pair<int,int> p2){
+bool cmp(pair<int,int> p1,pair<int,int> p2){
     if(abs(p1.first - p2.first) > abs(p1.second - p2.second)){
         return true;
     }
@@ -34,9 +34,7 @@ int main(){
     queue<int> q; 
     vector<bool> ok = {false};
     q.push(0); 
-
     sort(v.begin(), v.end(), cmp);
-
     ok[0] = true; 
     long long sum = 0;
     while(!q.empty()){
@@ -51,20 +49,19 @@ int main(){
                 if(abs(to1 - v[a].first) + abs(to2 - v[a].second) < max1){
                     max1 = abs(to1 - v[a].first) + abs(to2 - v[a].second);
                     index = i;    
+                   
                 }
             }
         } 
         
         if(ok[index] == false){
+          
             ok[index] = true;
             q.push(index);
             if(sum < max1){
                 sum = max1;
             }
         }
-        
     } 
-    
     cout << sum;
-        
 }
